@@ -1,0 +1,25 @@
+{
+  "count": 1200,
+  "embedding": "all-MiniLM-L6-v2 (ONNX)",
+  "query": {
+    "language": "python",
+    "code": "class ReviewService:\n    @staticmethod\n    def inspect_payload(payload, bucket=[]):\n        bucket.append(payload)\n        return bucket\n",
+    "contract": "Kiekvienas kvietimas be bucket argumento turi gauti atskirą sąrašą."
+  },
+  "top3": [
+    {
+      "id": "mutable_default-042-issue",
+      "distance": 0.21882879734039307
+    },
+    {
+      "id": "mutable_default-037-issue",
+      "distance": 0.21908241510391235
+    },
+    {
+      "id": "mutable_default-033-issue",
+      "distance": 0.2242627739906311
+    }
+  ],
+  "elapsed_s": 25.9,
+  "gemini_api_executed": false
+}

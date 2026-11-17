@@ -1,0 +1,5 @@
+{
+  "language": "python",
+  "code": "def calculate_ratio(total, count):\n    return total / count\n",
+  "contract": "total ir count yra skaičiai; count gali būti 0. Kai count == 0, grąžinti None; kitu atveju total / count."
+}

@@ -1,0 +1,20 @@
+@startuml
+start
+:Gauti Python kodą ir elgesio sutartį X;
+:Patikrinti įvestį ir perskaityti AST;
+if (RAG režimas?) then (taip)
+  :Apskaičiuoti X embedding;
+  :ChromaDB atrinkti 3 artimiausius pavyzdžius;
+else (ne)
+  :Parinkti zero shot arba pastovius few shot pavyzdžius;
+endif
+:Suformuoti užklausą;
+:Gemini sugeneruoti peržiūrą;
+:Patikrinti JSON schemą ir eilutės atitiktį;
+if (Atsakymas tinkamas?) then (taip)
+  :Pateikti y ir išsaugoti žurnalą;
+else (ne)
+  :Parodyti klaidą;
+endif
+stop
+@enduml

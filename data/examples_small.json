@@ -1,0 +1,68 @@
+[
+  {
+    "id": "mutable_default-000-issue",
+    "family": "mutable_default",
+    "source": "synthetic_template",
+    "template_variant": 0,
+    "x": {
+      "language": "python",
+      "code": "def review_mutable_default_0(value_0, bucket=[]):\n    bucket.append(value_0)\n    return bucket\n\n# Scenario 0: mutable_default\n",
+      "contract": "Kiekvienas kvietimas be bucket argumento turi gauti atskirą sąrašą."
+    },
+    "y": {
+      "has_issue": true,
+      "issue_type": "correctness",
+      "severity": "medium",
+      "line": 1,
+      "problematic_code": "def review_mutable_default_0(value_0, bucket=[]):",
+      "explanation": "Numatytasis sąrašas bendras keliems funkcijos kvietimams.",
+      "recommendation": "Naudoti None ir kiekvienam kvietimui sukurti sąrašą.",
+      "suggested_code": "def review_mutable_default_0(value_0, bucket=None):\n    if bucket is None:\n        bucket = []\n    bucket.append(value_0)\n    return bucket\n",
+      "confidence": 1.0
+    }
+  },
+  {
+    "id": "unsafe_eval-000-issue",
+    "family": "unsafe_eval",
+    "source": "synthetic_template",
+    "template_variant": 0,
+    "x": {
+      "language": "python",
+      "code": "def review_unsafe_eval_0(value_0):\n    return eval(value_0)\n\n# Scenario 0: unsafe_eval\n",
+      "contract": "Tekstas gaunamas iš nepatikimo naudotojo ir turi būti JSON duomenys."
+    },
+    "y": {
+      "has_issue": true,
+      "issue_type": "security",
+      "severity": "critical",
+      "line": 2,
+      "problematic_code": "return eval(value_0)",
+      "explanation": "eval gali vykdyti nepatikimame tekste esantį Python kodą.",
+      "recommendation": "JSON duomenis apdoroti su json.loads.",
+      "suggested_code": "import json\ndef review_unsafe_eval_0(value_0):\n    return json.loads(value_0)\n",
+      "confidence": 1.0
+    }
+  },
+  {
+    "id": "division_zero-000-clean",
+    "family": "division_zero",
+    "source": "synthetic_template",
+    "template_variant": 0,
+    "x": {
+      "language": "python",
+      "code": "def review_division_zero_0(a, b):\n    if b == 0:\n        return None\n    return a / b\n\n# Scenario 0: division_zero\n",
+      "contract": "a ir b yra skaičiai; kai b lygu 0, grąžinti None, kitu atveju a / b."
+    },
+    "y": {
+      "has_issue": false,
+      "issue_type": "none",
+      "severity": "none",
+      "line": null,
+      "problematic_code": "",
+      "explanation": "Pagal nurodytą sutartį nagrinėjamos problemos nerasta.",
+      "recommendation": "Šiuo aspektu keitimas nereikalingas.",
+      "suggested_code": "",
+      "confidence": 1.0
+    }
+  }
+]

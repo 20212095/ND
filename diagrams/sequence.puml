@@ -1,0 +1,24 @@
+@startuml
+actor "Programuotojas" as User
+participant "Colab" as UI
+participant "Peržiūros agentas" as Agent
+database "ChromaDB" as DB
+participant "Gemini API" as Model
+User -> UI : kodas ir elgesio sutartis X
+UI -> Agent : run_agent(X)
+Agent -> Agent : patikrinti įvestį ir sudaryti vektorių
+opt RAG režimas
+  Agent -> DB : query(X vektorius, n_results=3)
+  DB --> Agent : trys panašiausi (X,y)
+end
+Agent -> Agent : suformuoti užklausą
+Agent -> Model : X, instrukcija ir kontekstas
+Model --> Agent : JSON kandidatas
+Agent -> Agent : validuoti schemą ir eilutę
+alt Atsakymas tinkamas
+  Agent --> UI : y ir etapų žurnalas
+  UI --> User : paaiškinimas ir siūlomas kodas
+else Atsakymas netinkamas
+  Agent --> UI : validavimo klaida
+end
+@enduml

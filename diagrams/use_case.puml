@@ -1,0 +1,23 @@
+@startuml
+left to right direction
+actor "Programuotojas" as Dev
+actor "Gemini API" as Gemini
+rectangle "Python kodo peržiūros asistentas" {
+  usecase "Pateikti kodą ir sutartį" as Submit
+  usecase "Atlikti kodo peržiūrą" as Review
+  usecase "Atrinkti 3 pavyzdžius" as Retrieve
+  usecase "Gauti JSON ir rekomendaciją" as Result
+  usecase "Priimti arba atmesti pataisą" as Decide
+}
+Dev --> Submit
+Dev --> Review
+Review ..> Retrieve : <<include>>
+Gemini --> Review
+Review ..> Result : <<include>>
+Dev --> Result
+Dev --> Decide
+note bottom of Review
+Rodomas 1.6 RAG režimas.
+1.5 režime atranka nenaudojama.
+end note
+@enduml

@@ -1,0 +1,13 @@
+digraph G {
+graph [rankdir=TB, bgcolor="white", pad="0.15", nodesep="0.3", ranksep="0.4"];
+node [shape=box, fontname="DejaVu Sans", fontsize=12, style="rounded,filled", fillcolor="#F3F6F9", color="#586675", margin="0.15,0.12"];
+edge [fontname="DejaVu Sans", fontsize=10, color="#586675"];
+User [label="Programuotojas\nPython kodas ir elgesio sutartis X"];
+Agent [label="Vienas peržiūros agentas\nįvesties patikra ir proceso valdymas",fillcolor="#E4EEF6"];
+DB [label="MiniLM ir ChromaDB\n3 artimiausi pavyzdžiai iš 1200"];
+LLM [label="Gemini API\nproblemos analizė ir JSON kandidatas"];
+Valid [label="JSON ir eilutės patikra"];
+Out [label="Rezultatas y\npaaiškinimas ir siūlomas kodas"];
+User -> Agent; Agent -> DB [label="RAG režimas"]; DB -> LLM [label="kontekstas ir X"];
+Agent -> LLM [label="be RAG",style=dashed]; LLM -> Valid; Valid -> Out;
+}

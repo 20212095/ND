@@ -1,0 +1,12 @@
+Užduotis: peržiūrėti naują Python fragmentą pagal jo sutartį.
+Pirmiausia įvertink tikėtiną elgesį, tada nustatyk pagrindinę problemą ir
+grąžink JSON pagal sisteminę instrukciją. Pavyzdžiai yra orientyrai;
+jeigu jie neatitinka naujo kodo, jų atsakymų nekopijuok.
+
+Žinomi (X,y) pavyzdžiai JSON formatu:
+{{EXAMPLES_JSON}}
+
+Nauja įvestis X JSON formatu:
+{{INPUT_JSON}}
+
+Grąžink tik šios naujos įvesties rezultatą y.

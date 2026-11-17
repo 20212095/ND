@@ -1,0 +1,20 @@
+@startuml
+top to bottom direction
+actor "Programuotojas" as User
+component "Colab sąsaja" as UI
+component "Vienas peržiūros agentas\nįvestis, kontekstas, užklausa, validacija" as Agent
+database "ChromaDB\n1200 pavyzdžių" as DB
+component "MiniLM embedding modelis" as Embed
+cloud "Gemini API\ngeneratyvinis modelis" as LLM
+artifact "JSON ir žurnalai" as Logs
+User --> UI : Python kodas ir sutartis
+UI --> Agent : X
+Agent --> Embed : X tekstas
+Embed --> Agent : vektorius
+Agent --> DB : 3 artimiausių paieška
+DB --> Agent : trys (X,y)
+Agent --> LLM : papildyta užklausa
+LLM --> Agent : kandidatas y
+Agent --> Logs : patikrintas rezultatas
+Agent --> UI : y
+@enduml
